@@ -1,0 +1,4 @@
+#Thu May 14 00:28:21 BRT 2020
+base.0=/home/joao/www/appmentoria/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
