@@ -67,7 +67,7 @@ function Item({ title }) {
   );
 }
 
-const Home: () => React$Node = () => {
+const Mentorias: () => React$Node = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -106,4 +106,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Mentorias;

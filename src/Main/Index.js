@@ -4,11 +4,12 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { NavigationContainer } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Home from "../Home/Index";
+import Busca from "../Busca/Index";
 import Profile from "../Profile/Index";
 
 const Tab = createMaterialBottomTabNavigator();
 
-const Main: () => React$Node = () => {
+const Main: () => React$Node = (navigation) => {
   return (
     <>
       <NavigationContainer>
@@ -19,7 +20,25 @@ const Main: () => React$Node = () => {
             options={{
               tabBarLabel: "Home",
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={26} />
+                <MaterialCommunityIcons
+                  name="home-outline"
+                  color={color}
+                  size={26}
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Busca"
+            component={Busca}
+            options={{
+              tabBarLabel: "Busca",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="magnify"
+                  color={color}
+                  size={26}
+                />
               ),
             }}
           />
@@ -30,7 +49,7 @@ const Main: () => React$Node = () => {
               tabBarLabel: "Profile",
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
-                  name="account"
+                  name="account-circle-outline"
                   color={color}
                   size={26}
                 />
