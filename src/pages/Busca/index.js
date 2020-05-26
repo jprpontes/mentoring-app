@@ -6,13 +6,16 @@ import {
   Text,
   TextInput,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 
 import { debounce } from "lodash";
 
-import { Searchbar } from "react-native-paper";
+import { Searchbar, Button } from "react-native-paper";
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+import { useNavigation } from "@react-navigation/native";
 
 // import Constants from "expo-constants";
 
@@ -174,11 +177,22 @@ function createRows(data, columns) {
 }
 
 function Item({ title }) {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.itemContainer}>
-      <MaterialCommunityIcons name="pound" style={styles.itemIcon} size={26} />
-      <Text style={styles.itemTitle}>{title}</Text>
-    </View>
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => navigation.navigate("Mentorias")}
+    >
+      <View>
+        <MaterialCommunityIcons
+          name="pound"
+          style={styles.itemIcon}
+          size={26}
+        />
+        <Text style={styles.itemTitle}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -188,7 +202,7 @@ function onChangeText(text) {
   console.log(text);
 }
 
-const Busca: () => React$Node = () => {
+const Busca: React.FC = () => {
   // const [value, onChangeText] = React.useState("Useless Placeholder");
   const value = React.useState("");
 
@@ -237,6 +251,7 @@ const styles = StyleSheet.create({
     height: 90,
     padding: 10,
     flexBasis: 0,
+    display: "flex",
   },
   itemEmpty: {
     backgroundColor: "transparent",

@@ -2,14 +2,15 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Home from "../Home/Index";
-import Busca from "../Busca/Index";
-import Profile from "../Profile/Index";
+import Home from "../pages/Home";
+import Profile from "../pages/Profile";
+import BuscaRoutes from "./busca.routes";
 
 const Tab = createMaterialBottomTabNavigator();
 
-const Main: () => React$Node = (navigation) => {
+const AppRoutes: React.FC = () => {
   return (
     <>
       <NavigationContainer>
@@ -30,7 +31,7 @@ const Main: () => React$Node = (navigation) => {
           />
           <Tab.Screen
             name="Busca"
-            component={Busca}
+            component={BuscaRoutes}
             options={{
               tabBarLabel: "Busca",
               tabBarIcon: ({ color }) => (
@@ -57,9 +58,12 @@ const Main: () => React$Node = (navigation) => {
             }}
           />
         </Tab.Navigator>
+        {/* <Stack.Navigator headerMode="none">
+          <Stack.Screen name="Mentorias" component={Mentorias} />
+        </Stack.Navigator> */}
       </NavigationContainer>
     </>
   );
 };
 
-export default Main;
+export default AppRoutes;

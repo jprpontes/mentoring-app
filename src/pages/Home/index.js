@@ -67,7 +67,7 @@ function Item({ title }) {
   );
 }
 
-const Mentorias: () => React$Node = () => {
+const Home: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -106,4 +106,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Mentorias;
+export default Home;
