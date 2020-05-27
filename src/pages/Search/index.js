@@ -4,7 +4,6 @@ import {
   FlatList,
   View,
   Text,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
@@ -16,6 +15,10 @@ import { Searchbar, Button } from "react-native-paper";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { useNavigation } from "@react-navigation/native";
+
+import SubjectItem from "../../components/Subject/SubjectItem";
+
+import MentoringItem from "../../components/Mentoring/MentoringItem";
 
 // import Constants from "expo-constants";
 
@@ -58,106 +61,6 @@ const DATA = [
     id: "sdsdsdsddd",
     title: "Third Item",
   },
-  {
-    id: "3455",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
-  {
-    id: "5667",
-    title: "Third Item",
-  },
 ];
 
 function createRows(data, columns) {
@@ -176,33 +79,13 @@ function createRows(data, columns) {
   return data; // [F]
 }
 
-function Item({ title }) {
-  const navigation = useNavigation();
-
-  return (
-    <TouchableOpacity
-      style={styles.itemContainer}
-      onPress={() => navigation.navigate("Mentorias")}
-    >
-      <View>
-        <MaterialCommunityIcons
-          name="pound"
-          style={styles.itemIcon}
-          size={26}
-        />
-        <Text style={styles.itemTitle}>{title}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-}
-
 const onChangeTextDelayed = debounce(onChangeText, 2000);
 
 function onChangeText(text) {
   console.log(text);
 }
 
-const Busca: React.FC = () => {
+const Search: React.FC = () => {
   // const [value, onChangeText] = React.useState("Useless Placeholder");
   const value = React.useState("");
 
@@ -219,15 +102,25 @@ const Busca: React.FC = () => {
 
       <SafeAreaView style={styles.container}>
         <FlatList
+          style={styles.listSubject}
           data={createRows(DATA, columns)}
           renderItem={({ item }) => {
             if (item.empty) {
               return <View style={[styles.item, styles.itemEmpty]} />;
             }
-            return <Item title={item.title} />;
+            return <SubjectItem item={item} />;
           }}
           keyExtractor={(item) => item.id}
-          numColumns={columns}
+          // numColumns={columns}
+          horizontal={true}
+        />
+        <FlatList
+          style={styles.listMentoring}
+          data={createRows(DATA, columns)}
+          renderItem={({ item }) => {
+            return <MentoringItem item={item} />;
+          }}
+          keyExtractor={(item) => item.id}
         />
       </SafeAreaView>
     </>
@@ -239,30 +132,20 @@ const styles = StyleSheet.create({
     // flex: 1,
     // marginTop: Constants.statusBarHeight,
   },
+  listSubject: {
+    // marginVertical: 5,
+    paddingTop: 7,
+    paddingBottom: 10,
+  },
+  listMentoring: {
+    marginBottom: 5,
+  },
   inputText: {
     height: 50,
-  },
-  itemContainer: {
-    // alignItems: "center",
-    backgroundColor: "#fff",
-    flexGrow: 1,
-    flexDirection: "column",
-    margin: 4,
-    height: 90,
-    padding: 10,
-    flexBasis: 0,
-    display: "flex",
   },
   itemEmpty: {
     backgroundColor: "transparent",
   },
-  itemIcon: {
-    flexGrow: 1,
-    color: "#6886c5",
-  },
-  itemTitle: {
-    fontSize: 12,
-  },
 });
 
-export default Busca;
+export default Search;

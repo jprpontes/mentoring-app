@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
-import BuscaRoutes from "./busca.routes";
+import SearchRoutes from "./search.routes";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -30,8 +30,8 @@ const AppRoutes: React.FC = () => {
             }}
           />
           <Tab.Screen
-            name="Busca"
-            component={BuscaRoutes}
+            name="Searcg"
+            component={SearchRoutes}
             options={{
               tabBarLabel: "Busca",
               tabBarIcon: ({ color }) => (

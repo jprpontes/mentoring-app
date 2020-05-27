@@ -8,6 +8,8 @@ import {
   StyleSheet,
 } from "react-native";
 
+import SubjectItem from "../../components/Subject/SubjectItem";
+
 // import Constants from "expo-constants";
 
 const columns = 3;
@@ -34,12 +36,20 @@ const DATA = [
     title: "Third Item",
   },
   {
-    id: "58694a0f-3da1-471f-bd96-145sds71e29d72",
+    id: "58694a0f-3da1-471f-bd96-14sdd5sds71e29d72",
     title: "Third Item",
   },
   {
-    id: "58694a0f-3da1-471f-bd96sdss71e29d72",
+    id: "58694a0f-3da1-471f-bd9aa6sdss71e29d72",
     title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bsdsdd96sdss71e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-sdsd",
+    title: "Third sd",
   },
 ];
 
@@ -76,7 +86,7 @@ const Home: React.FC = () => {
           if (item.empty) {
             return <View style={[styles.item, styles.itemEmpty]} />;
           }
-          return <Item title={item.title} />;
+          return <SubjectItem item={item} />;
         }}
         keyExtractor={(item) => item.id}
         numColumns={columns}
