@@ -25,12 +25,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flexGrow: 1,
     flexDirection: "column",
-    margin: 4,
+    margin: 7,
     height: 90,
     padding: 10,
     flexBasis: 0,
     display: "flex",
-    width: 100,
   },
   empty: {
     backgroundColor: "transparent",

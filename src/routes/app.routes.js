@@ -4,7 +4,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Home from "../pages/Home";
+// import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import SearchRoutes from "./search.routes";
 
@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
     <>
       <NavigationContainer>
         <Tab.Navigator barStyle={{ backgroundColor: "#fff" }} labeled={true}>
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Home"
             component={Home}
             options={{
@@ -28,12 +28,12 @@ const AppRoutes: React.FC = () => {
                 />
               ),
             }}
-          />
+          /> */}
           <Tab.Screen
-            name="Searcg"
+            name="Search"
             component={SearchRoutes}
             options={{
-              tabBarLabel: "Busca",
+              tabBarLabel: "Explore",
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                   name="magnify"

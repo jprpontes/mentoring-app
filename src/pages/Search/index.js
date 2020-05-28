@@ -26,40 +26,23 @@ const columns = 3;
 
 const DATA = [
   {
+    id: "bd7acbea-c1b1-sd",
+    title: "First Item",
+  },
+  {
+    id: "3ac68asdsdaa97f63",
+    title: "Second Item",
+  },
+];
+
+const DATA2 = [
+  {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     title: "First Item",
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
     title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-14557asdadn",
-    title: "Third Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-14557sdsdasd72",
-    title: "Third Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145sds71e29d72",
-    title: "Third Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96sdss71e29d72",
-    title: "Third Item",
-  },
-  {
-    id: "sdsdsd",
-    title: "Third Item",
-  },
-  {
-    id: "sdsdsdsddd",
-    title: "Third Item",
   },
 ];
 
@@ -87,16 +70,20 @@ function onChangeText(text) {
 
 const Search: React.FC = () => {
   // const [value, onChangeText] = React.useState("Useless Placeholder");
-  const value = React.useState("");
+  // const value = React.useState("");
+  const navigation = useNavigation();
 
   return (
     <>
       <View>
         <Searchbar
           placeholder="Busque por mentorias."
-          // style={styles.inputText}
+          style={styles.searchbar}
           onChangeText={onChangeTextDelayed}
-          value={value}
+          onIconPress={() => navigation.goBack()}
+          // value={value}
+          icon="arrow-left"
+          autoFocus={true}
         />
       </View>
 
@@ -116,7 +103,7 @@ const Search: React.FC = () => {
         />
         <FlatList
           style={styles.listMentoring}
-          data={createRows(DATA, columns)}
+          data={createRows(DATA2, columns)}
           renderItem={({ item }) => {
             return <MentoringItem item={item} />;
           }}
@@ -132,6 +119,11 @@ const styles = StyleSheet.create({
     // flex: 1,
     // marginTop: Constants.statusBarHeight,
   },
+  searchbar: {
+    marginTop: 15,
+    marginBottom: 8,
+    marginHorizontal: 12,
+  },
   listSubject: {
     // marginVertical: 5,
     paddingTop: 7,
@@ -139,9 +131,6 @@ const styles = StyleSheet.create({
   },
   listMentoring: {
     marginBottom: 5,
-  },
-  inputText: {
-    height: 50,
   },
   itemEmpty: {
     backgroundColor: "transparent",
