@@ -1,12 +1,12 @@
 import React from "react";
 import { Text } from "react-native";
 
-const Profile: React.FC = () => {
+function Profile() {
   return (
     <>
       <Text>Vc está na profile</Text>
     </>
   );
-};
+}
 
 export default Profile;

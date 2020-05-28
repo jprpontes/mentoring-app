@@ -7,7 +7,7 @@ import { Avatar } from "react-native-paper";
 
 import { useNavigation } from "@react-navigation/native";
 
-const MentoringItem: React.FC = ({ item }) => {
+function MentoringItem({ item }) {
   const navigation = useNavigation();
 
   return (
@@ -33,7 +33,7 @@ const MentoringItem: React.FC = ({ item }) => {
       </TouchableOpacity>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

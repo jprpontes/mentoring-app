@@ -5,7 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import { useNavigation } from "@react-navigation/native";
 
-const SubjectItem: React.FC = ({ item }) => {
+function SubjectItem({ item }) {
   const navigation = useNavigation();
 
   return (
@@ -18,7 +18,7 @@ const SubjectItem: React.FC = ({ item }) => {
       </TouchableOpacity>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

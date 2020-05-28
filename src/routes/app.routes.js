@@ -10,7 +10,7 @@ import SearchRoutes from "./search.routes";
 
 const Tab = createMaterialBottomTabNavigator();
 
-const AppRoutes: React.FC = () => {
+function AppRoutes() {
   return (
     <>
       <NavigationContainer>
@@ -64,6 +64,6 @@ const AppRoutes: React.FC = () => {
       </NavigationContainer>
     </>
   );
-};
+}
 
 export default AppRoutes;

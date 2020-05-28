@@ -68,7 +68,7 @@ function onChangeText(text) {
   console.log(text);
 }
 
-const Search: React.FC = () => {
+function Search() {
   // const [value, onChangeText] = React.useState("Useless Placeholder");
   // const value = React.useState("");
   const navigation = useNavigation();
@@ -112,7 +112,7 @@ const Search: React.FC = () => {
       </SafeAreaView>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

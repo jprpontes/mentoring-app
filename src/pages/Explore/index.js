@@ -42,15 +42,7 @@ function createRows(data, columns) {
   return data; // [F]
 }
 
-function Item({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
-
-const Explore: React.FC = () => {
+function Explore() {
   const navigation = useNavigation();
 
   return (
@@ -85,7 +77,7 @@ const Explore: React.FC = () => {
       </SafeAreaView>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

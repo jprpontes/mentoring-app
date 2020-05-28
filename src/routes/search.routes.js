@@ -7,7 +7,7 @@ import Search from "../pages/Search";
 
 const Stack = createStackNavigator();
 
-const SearchRoutes: React.FC = () => {
+function SearchRoutes() {
   return (
     <>
       <Stack.Navigator headerMode="none" initialRouteName="Explore">
@@ -16,6 +16,6 @@ const SearchRoutes: React.FC = () => {
       </Stack.Navigator>
     </>
   );
-};
+}
 
 export default SearchRoutes;

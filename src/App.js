@@ -4,8 +4,8 @@ import Routes from "./routes";
 
 import * as NavigationService from "./services/navigation";
 
-const App: React.FC = () => {
+function App() {
   return <Routes ref={(nav) => NavigationService.setNavigator(nav)} />;
-};
+}
 
 export default App;
