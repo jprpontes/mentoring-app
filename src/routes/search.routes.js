@@ -11,8 +11,20 @@ function SearchRoutes() {
   return (
     <>
       <Stack.Navigator headerMode="none" initialRouteName="Explore">
-        <Stack.Screen name="Explore" component={Explore} />
-        <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen
+          name="Explore"
+          component={Explore}
+          options={{
+            animationEnabled: false,
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            animationEnabled: false,
+          }}
+        />
       </Stack.Navigator>
     </>
   );

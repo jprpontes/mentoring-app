@@ -47,7 +47,7 @@ function AppRoutes() {
             name="Profile"
             component={Profile}
             options={{
-              tabBarLabel: "Profile",
+              tabBarLabel: "Minha conta",
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons
                   name="account-circle-outline"
