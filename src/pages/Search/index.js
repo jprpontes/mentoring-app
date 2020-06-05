@@ -10,6 +10,8 @@ import {
 
 import { debounce } from "lodash";
 
+import axios from "axios";
+
 import { Searchbar, Button } from "react-native-paper";
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -18,50 +20,35 @@ import { useNavigation } from "@react-navigation/native";
 
 import SubjectItem from "../../components/Subject/SubjectItem";
 
-import MentoringItem from "../../components/Mentoring/MentoringItem";
-
-const onChangeTextDelayed = debounce(onChangeText, 2000);
-
-function onChangeText(text) {
-  console.log(text);
-}
+import MentorItem from "../../components/Mentor/MentorItem";
 
 function Search() {
   const navigation = useNavigation();
   const [subjects, setSubjects] = useState([]);
   const [mentoring, setMentoring] = useState([]);
 
-  useEffect(() => {
-    setSubjects([
-      {
-        id: 1,
-        title: "Programação",
-      },
-      {
-        id: 2,
-        title: "Culinária",
-      },
-      {
-        id: 3,
-        title: "Política",
-      },
-    ]);
+  const onChangeTextDelayed = debounce(onChangeText, 1000);
 
-    setMentoring([
-      {
-        id: 1,
-        title: "Javascript",
-      },
-      {
-        id: 2,
-        title: "Css",
-      },
-      {
-        id: 3,
-        title: "React",
-      },
-    ]);
-  }, []);
+  function onChangeText(text) {
+    runSearch(text);
+  }
+
+  function runSearch(value) {
+    //Fazendo busca.
+    var searchValue = value;
+
+    axios
+      .get(`http://192.168.3.5:3333/search/${searchValue}`)
+      .then((result) => {
+        setSubjects(result.data.subjects);
+        setMentoring(result.data.mentors);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     return () => console.log("Saiu do component");
@@ -96,7 +83,7 @@ function Search() {
           style={styles.listMentoring}
           data={mentoring}
           renderItem={({ item }) => {
-            return <MentoringItem item={item} />;
+            return <MentorItem item={item} />;
           }}
           keyExtractor={(item) => item.id}
         />
