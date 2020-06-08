@@ -4,10 +4,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Explore from "../pages/Explore";
 import Search from "../pages/Search";
+import Mentor from "../pages/Mentor";
 
 const Stack = createStackNavigator();
 
-function SearchRoutes() {
+function ExploreRoutes() {
   return (
     <>
       <Stack.Navigator headerMode="none" initialRouteName="Explore">
@@ -25,9 +26,16 @@ function SearchRoutes() {
             animationEnabled: false,
           }}
         />
+        <Stack.Screen
+          name="Mentor"
+          component={Mentor}
+          options={{
+            animationEnabled: false,
+          }}
+        />
       </Stack.Navigator>
     </>
   );
 }
 
-export default SearchRoutes;
+export default ExploreRoutes;

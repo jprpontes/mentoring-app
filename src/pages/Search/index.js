@@ -6,6 +6,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 
 import { debounce } from "lodash";
@@ -26,6 +27,7 @@ function Search() {
   const navigation = useNavigation();
   const [subjects, setSubjects] = useState([]);
   const [mentoring, setMentoring] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   const onChangeTextDelayed = debounce(onChangeText, 1000);
 
@@ -37,21 +39,64 @@ function Search() {
     //Fazendo busca.
     var searchValue = value;
 
+    if (searchValue == "") {
+      setSubjects([]);
+      setMentoring([]);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+
     axios
-      .get(`http://192.168.3.5:3333/search/${searchValue}`)
+      .get(`http://167.71.123.145:3333/search/${searchValue}`)
       .then((result) => {
         setSubjects(result.data.subjects);
         setMentoring(result.data.mentors);
+        setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
+  }
+
+  function createList() {
+    var list;
+    if (isLoading) {
+      list = <ActivityIndicator size="large" color="#0000ff" />;
+    } else {
+      list = (
+        <View>
+          <FlatList
+            style={styles.listSubject}
+            data={subjects}
+            renderItem={({ item }) => {
+              return <SubjectItem item={item} />;
+            }}
+            keyExtractor={(item) => item.id}
+            // numColumns={columns}
+            horizontal={true}
+          />
+          <FlatList
+            style={styles.listMentoring}
+            data={mentoring}
+            renderItem={({ item }) => {
+              return <MentorItem item={item} />;
+            }}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
+      );
+    }
+
+    return list;
   }
 
   useEffect(() => {}, []);
 
   useEffect(() => {
-    return () => console.log("Saiu do component");
+    return () => null;
   }, []);
 
   return (
@@ -67,27 +112,8 @@ function Search() {
           autoFocus={true}
         />
       </View>
-
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          style={styles.listSubject}
-          data={subjects}
-          renderItem={({ item }) => {
-            return <SubjectItem item={item} />;
-          }}
-          keyExtractor={(item) => item.id}
-          // numColumns={columns}
-          horizontal={true}
-        />
-        <FlatList
-          style={styles.listMentoring}
-          data={mentoring}
-          renderItem={({ item }) => {
-            return <MentorItem item={item} />;
-          }}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
+      {createList()}
+      <SafeAreaView style={styles.container} />
     </>
   );
 }

@@ -14,7 +14,7 @@ function MentorItem({ item }) {
     <>
       <TouchableOpacity
         style={styles.container}
-        // onPress={() => navigation.navigate("Mentorias")}
+        onPress={() => navigation.navigate("Mentor", { mentor_id: item.id })}
       >
         <Avatar.Image
           size={40}
