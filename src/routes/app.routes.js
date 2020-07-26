@@ -1,20 +1,35 @@
 // import "react-native-gesture-handler";
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 // import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import ExploreRoutes from "./explore.routes";
 
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#bc3c35",
+    secondary: "#5b232d",
+    secondaryOverlay: "#fe751e",
+  },
+};
+
 const Tab = createMaterialBottomTabNavigator();
 
 function AppRoutes() {
   return (
     <>
-      <NavigationContainer>
-        <Tab.Navigator barStyle={{ backgroundColor: "#fff" }} labeled={true}>
+      <NavigationContainer theme={MyTheme}>
+        <Tab.Navigator
+          barStyle={{
+            backgroundColor: MyTheme.colors.secondary,
+          }}
+          labeled={true}
+        >
           {/* <Tab.Screen
             name="Home"
             component={Home}
