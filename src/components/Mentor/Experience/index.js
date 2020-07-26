@@ -25,6 +25,30 @@ function Experience() {
         company: "DPC Distribuidor Atacadista S.A",
         period: "5 anos",
       },
+      {
+        id: 4,
+        occupation: "Desenvolvedor",
+        company: "DPC Distribuidor Atacadista S.A",
+        period: "5 anos",
+      },
+      {
+        id: 5,
+        occupation: "Desenvolvedor",
+        company: "DPC Distribuidor Atacadista S.A",
+        period: "5 anos",
+      },
+      {
+        id: 6,
+        occupation: "Desenvolvedor",
+        company: "DPC Distribuidor Atacadista S.A",
+        period: "5 anos",
+      },
+      {
+        id: 7,
+        occupation: "Desenvolvedor",
+        company: "DPC Distribuidor Atacadista S.A",
+        period: "5 anos",
+      },
     ]);
   }, []);
 

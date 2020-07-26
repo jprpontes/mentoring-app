@@ -25,6 +25,30 @@ function Review() {
         review: "Mentoria incrível de um profissional experiente.",
         username: "beltrana",
       },
+      {
+        id: 4,
+        reviewTitle: '"Excelente!"',
+        review: "Mentoria incrível de um profissional experiente.",
+        username: "beltrana",
+      },
+      {
+        id: 5,
+        reviewTitle: '"Excelente!"',
+        review: "Mentoria incrível de um profissional experiente.",
+        username: "beltrana",
+      },
+      {
+        id: 6,
+        reviewTitle: '"Excelente!"',
+        review: "Mentoria incrível de um profissional experiente.",
+        username: "beltrana",
+      },
+      {
+        id: 7,
+        reviewTitle: '"Excelente!"',
+        review: "Mentoria incrível de um profissional experiente.",
+        username: "beltrana",
+      },
     ]);
   }, []);
 
